@@ -1,6 +1,9 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const logger = require('morgan')
+const movement = require('./movement.js');
+
+
 const app = express()
 const {
   fallbackHandler,
@@ -24,12 +27,15 @@ app.use(poweredByHandler)
 // Handle POST request to '/start'
 app.post('/start', (request, response) => {
   // NOTE: Do something here to start the game
-
   // Response data
   const data = {
-    name:  'Smaug',
-    color: '#C70039',
-    taunt: 'Erebor is mine!'
+    color: "#C70039",
+    secondary_color: "#00FF00",
+    name: "Smaug, the terrible",
+    head_url: "https://pbs.twimg.com/profile_images/2931866544/127b863ca71b759a41cacd9715435a99.jpeg", // optional, but encouraged!
+    taunt: "I am King Under the Mountain!", // optional, but encouraged!
+    headType: "evil",
+    tailType: "pixel"
   }
 
   return response.json(data)
@@ -37,11 +43,13 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-  // NOTE: Do something here to generate your move
 
-  // Response data
   const data = {
-    move: 'up', // one of: ['up','down','left','right']
+      move: movement.slither(request),
+      taunt: ["I am fire, I am death.",
+              "My teeth are swords!",
+              "You will burn!"
+      ],
   }
 
   return response.json(data)

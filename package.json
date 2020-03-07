@@ -5,7 +5,8 @@
   "private": true,
   "author": "Sendwithus",
   "contributers": [
-    "John Schriemer"
+    "John Schriemer",
+    "David Schriemer"
   ],
   "repository": "https://github.com/sendwithus/battlesnake-node",
   "licenses": [
@@ -18,7 +19,10 @@
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "flood-fill": "^0.1.1",
+    "manhattan": "^1.0.0",
+    "morgan": "^1.9.1",
+    "pathfinding": "^0.4.18"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
