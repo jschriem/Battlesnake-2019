@@ -52,16 +52,17 @@ app.post('/move', (request, response) => {
       console.log("startin up3");    //board width
       const body = input.you.body;
       console.log("startin up4");        //snake body
-      const head = input.you.body.data;
+      const head = input.you.body[0];
       console.log("startin up5");     //snake head
       const health = input.you.health;
       console.log("startin up6");    //snake health
       const food = input.board.food;
       console.log("startin up7");      //food locations
       const finder = new PF.AStarFinder(); 
-      console.log("lets go! + " +head)
+      console.log("lets go! + " +head.x)
 
-      const grid = new PF.Grid(width, height); 
+      const grid = new PF.Grid(width, height);
+      console.log("grid created") 
       for (let i = 1; i < body.data.length - 1; i++) {
         grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
       }
