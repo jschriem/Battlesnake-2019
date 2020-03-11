@@ -9,14 +9,15 @@ let movement = {
 
   slither: function(request) {
     
-      var input = request.body;         //board details
-      var health = input.you.health;    //snake health
-      const foodSearch = 100;            //health for food search
+      //var input = request.body;         //board details
+      //var health = input.you.health;    //snake health
+      //const foodSearch = 100;            //health for food search
 
-        while(health > foodSearch){
+        /*while(health > foodSearch){
           return fly.flying(request)
-        }
-        return(search.searching(request));
+        }*/
+
+      return(search.searching(request));
   },
 }
 module.exports = movement;
