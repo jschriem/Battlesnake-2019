@@ -14,7 +14,7 @@ let search = {
       var height = input.board.height;  //board height
       var width = input.board.width;    //board width
       var body = input.you.body;        //snake body
-      var head = input.you.body[0];     //snake head
+      var head = input.you.body.data[0];     //snake head
       var health = input.you.health;    //snake health
       var food = input.board.food;      //food locations
   
@@ -37,10 +37,6 @@ let search = {
       } else {
         return 'down';
       }
-
-
-
-    
     },
   }
   module.exports = search;
