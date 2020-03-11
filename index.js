@@ -68,8 +68,8 @@ app.post('/move', (request, response) => {
       console.log("mark on body on grid completed")
 
        //Mark othersnakes on the grid
-       for (let i = 1; i < snakess.length - 1; i++) {
-        for (let j = 1; j < snakess[i].body.length - 1; j++) {
+       for (let i = 0; i < snakess.length - 1; i++) {
+        for (let j = 0; j < snakess[i].body.length - 1; j++) {
           grid.setWalkableAt(snakess[i].body[j].x, snakess[i].body[j].y, false);
         }
       }
