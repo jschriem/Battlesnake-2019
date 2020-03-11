@@ -52,7 +52,7 @@ app.post('/move', (request, response) => {
       console.log("startin up3");    //board width
       const body = input.you.body;
       console.log("startin up4");        //snake body
-      const head = input.you.body.data[0];
+      const head = input.you.body.data;
       console.log("startin up5");     //snake head
       const health = input.you.health;
       console.log("startin up6");    //snake health
