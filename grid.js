@@ -24,6 +24,8 @@ let grid = {
       for (let i = 1; i < body.data.length - 1; i++) {
         grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
       }
+
+      return grid;
     },
   }
   module.exports = search;

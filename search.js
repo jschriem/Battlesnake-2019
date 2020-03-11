@@ -18,14 +18,13 @@ let search = {
       var health = input.you.health;    //snake health
       var food = input.board.food;      //food locations
   
-      var grid = new PF.Grid(width, height); 
       var finder = new PF.AStarFinder(); 
     
-      grid.initialize(request); //find where other snakes and food locations
+      var grid = grid.initialize(request); //find where other snakes and food locations
 
   
       var path = finder.findPath(head.x, head.y, food[0].x, food[0].y, grid);
-      
+
       if (path[1][0] === head.x && path[1][1] === head.y + 1) {
         return 'down';
       } else if (path[1][0] === head.x && path[1][1] === head.y - 1) {
