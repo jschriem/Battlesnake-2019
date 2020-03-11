@@ -43,7 +43,7 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-
+      console.log("startin up");
       const input = request.body;         //board details
       const height = input.board.height;  //board height
       const width = input.board.width;    //board width
@@ -55,12 +55,16 @@ app.post('/move', (request, response) => {
       console.log("lets go! + " +head)
 
 
-    function search(request){
+    
+      const grid = new PF.Grid(width, height); 
+      for (let i = 1; i < body.data.length - 1; i++) {
+        grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
+      }
+
       const data = {}
-      var gridval = gridbox(width, height, body); //find where other snakes and food locations
-      console.log(head + head.x + gridval)
+      console.log(head + head.x + grid)
       console.log("TEST")
-      var path = finder.findPath(head.x, head.y, food[0].x, food[0].y, gridval);
+      var path = finder.findPath(head.x, head.y, food[0].x, food[0].y, grid);
       console.log(path);
 
       if (path[1][0] === head.x && path[1][1] === head.y + 1) {
@@ -79,18 +83,6 @@ app.post('/move', (request, response) => {
         data.move = 'down';
         return response.json(data)
       }
-    }
-
-    function gridbox(){
-      const grid = new PF.Grid(width, height); 
-      for (let i = 1; i < body.data.length - 1; i++) {
-        grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
-      }
-
-      return grid;
-    }
-    console.log("we got here..")
-    search(head,food,width, height, body);
 })
 
 app.post('/end', (request, response) => {
