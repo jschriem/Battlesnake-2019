@@ -63,10 +63,9 @@ app.post('/move', (request, response) => {
 
       const grid = new PF.Grid(width, height);
       console.log("grid created") 
-      for (let i = 1; i < body.data.length - 1; i++) {
-        grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
+      for (let i = 1; i < body.length - 1; i++) {
+        grid.setWalkableAt(body[i].x, body[i].y, false);
       }
-
       const data = {}
       console.log(head + head.x + grid)
       console.log("TEST")
