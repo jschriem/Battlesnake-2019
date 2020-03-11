@@ -45,17 +45,22 @@ app.post('/start', (request, response) => {
 app.post('/move', (request, response) => {
       console.log("startin up");
       const input = request.body;         //board details
+      console.log("startin up1");
       const height = input.board.height;  //board height
-      const width = input.board.width;    //board width
-      const body = input.you.body;        //snake body
-      const head = input.you.body.data[0];     //snake head
-      const health = input.you.health;    //snake health
-      const food = input.board.food;      //food locations
+      console.log("startin up2");
+      const width = input.board.width;
+      console.log("startin up3");    //board width
+      const body = input.you.body;
+      console.log("startin up4");        //snake body
+      const head = input.you.body.data[0];
+      console.log("startin up5");     //snake head
+      const health = input.you.health;
+      console.log("startin up6");    //snake health
+      const food = input.board.food;
+      console.log("startin up7");      //food locations
       const finder = new PF.AStarFinder(); 
       console.log("lets go! + " +head)
 
-
-    
       const grid = new PF.Grid(width, height); 
       for (let i = 1; i < body.data.length - 1; i++) {
         grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
