@@ -28,4 +28,4 @@ let grid = {
       return grid;
     },
   }
-  module.exports = search;
+  module.exports = grid;
