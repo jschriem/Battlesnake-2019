@@ -52,6 +52,8 @@ app.post('/move', (request, response) => {
       const health = input.you.health;    //snake health
       const food = input.board.food;      //food locations
       const finder = new PF.AStarFinder(); 
+      console.log("lets go! + " +head)
+
 
     function search(request){
       const data = {}
@@ -87,6 +89,7 @@ app.post('/move', (request, response) => {
 
       return grid;
     }
+    console.log("we got here..")
     search(head,food,width, height, body);
 })
 
