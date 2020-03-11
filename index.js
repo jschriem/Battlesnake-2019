@@ -43,9 +43,9 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-
+  console.log("test")
   const data = {
-      move:  movement.slither(request),
+      move:  search.searching(request),
       taunt: ["I am fire, I am death.",
               "My teeth are swords!",
               "You will burn!"

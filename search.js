@@ -21,10 +21,11 @@ let search = {
       var finder = new PF.AStarFinder(); 
     
       var gridbox = grid.initialize(request); //find where other snakes and food locations
-      console.log(head + head.x)
+      console.log(head + head.x + gridbox)
   
       var path = finder.findPath(head.x, head.y, food[0].x, food[0].y, gridbox);
-      console.log(path)
+      console.log(path);
+      console.log("ABC ABC");
 
       if (path[1][0] === head.x && path[1][1] === head.y + 1) {
         return 'down';
