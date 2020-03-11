@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const logger = require('morgan')
-const movement = require('./movement.js');
+var PF = require('pathfinding');
 
 
 const app = express()
@@ -43,16 +43,51 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-  console.log("test")
-  const data = {
-      move:  search.searching(request),
-      taunt: ["I am fire, I am death.",
-              "My teeth are swords!",
-              "You will burn!"
-      ],
-  }
 
-  return response.json(data)
+      var input = request.body;         //board details
+      var height = input.board.height;  //board height
+      var width = input.board.width;    //board width
+      var body = input.you.body;        //snake body
+      var head = input.you.body.data[0];     //snake head
+      var health = input.you.health;    //snake health
+      var food = input.board.food;      //food locations
+      var finder = new PF.AStarFinder(); 
+
+    function search(request){
+      const data = {}
+      var gridval = gridbox(request); //find where other snakes and food locations
+      console.log(head + head.x + gridval)
+  
+      var path = finder.findPath(head.x, head.y, food[0].x, food[0].y, gridval);
+      console.log(path);
+
+      if (path[1][0] === head.x && path[1][1] === head.y + 1) {
+        data.move = 'down'
+        return response.json(data)
+      } else if (path[1][0] === head.x && path[1][1] === head.y - 1) {
+        data.move = 'up';
+        return response.json(data)
+      } else if (path[1][0] === head.x + 1 && path[1][1] === head.y) {
+        data.move = 'right';
+        return response.json(data)
+      } else if (path[1][0] === head.x - 1 && path[1][1] === head.y) {
+        data.move = 'left';
+        return response.json(data)
+      } else {
+        data.move = 'down';
+        return response.json(data)
+      }
+    }
+
+    function gridbox(request){
+      const grid = new PF.Grid(width, height); 
+      for (let i = 1; i < body.data.length - 1; i++) {
+        grid.setWalkableAt(body.data[i].x, body.data[i].y, false);
+      }
+
+      return grid;
+    }
+    search(request);
 })
 
 app.post('/end', (request, response) => {
