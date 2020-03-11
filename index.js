@@ -45,7 +45,7 @@ app.post('/start', (request, response) => {
 app.post('/move', (request, response) => {
 
   const data = {
-      move: movement.slither(request),
+      move: down,//movement.slither(request),
       taunt: ["I am fire, I am death.",
               "My teeth are swords!",
               "You will burn!"
